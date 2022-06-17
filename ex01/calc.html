@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calc</title>
+</head>
+<body>
+	<form action="" class="calc">
+		<input type="text" id="opt1" required>
+		<select name="" id="oper">
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+			<option value="%">%</option>
+		</select>
+		<input type="text" id="opt2" required>
+		<input type="submit" value="Try me!">
+	</form>
+
+	<script>
+		const form = document.querySelector('.calc');
+		const input1 = document.getElementById('opt1');
+		const input2 = document.getElementById('opt2');
+		const oper = document.getElementById('oper');
+
+		form.addEventListener('submit', (e) => {
+			e.preventDefault();
+
+			const num1 = Number(input1.value);
+			const num2 = Number(input2.value);
+			if (
+				isNaN(num1) ||
+				isNaN(num2) ||
+				num1 < 0 ||
+				num2 < 0 ||
+				!Number.isInteger(num1) ||
+				!Number.isInteger(num2)
+			)
+			{
+				alert('Error :(');
+			}
+			else
+			{
+				if (num2 === 0 && (oper.value == '%' || oper.value == '/'))
+				{
+					alert('It\'s over 9000!');
+					console.log('It\s over 9000!');
+				}
+				else
+				{
+					switch(oper.value) {
+						case '+':
+							alert(num1 + num2);
+							console.log(num1 + num2);
+							break;
+						case '-':
+							alert(num1 - num2);
+							console.log(num1 - num2);
+							break;
+						case '*':
+							alert(num1 * num2);
+							console.log(num1 * num2);
+							break;
+						case '/':
+							alert(num1 / num2);
+							console.log(num1 / num2);
+							break;
+						case '%':
+							alert(num1 % num2);
+							console.log(num1 % num2);
+							break;
+					}
+				}
+			}
+		});
+
+		setInterval(function (){alert('Please, use me...')}, 30000);
+	</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Balloon</title>
+	<style>
+		.balloon {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			border-radius: 50%/50%;
+		}
+	</style>
+</head>
+<body>
+	<div class="balloon">
+	</div>
+	<script>
+		let balloon_size = 200;
+		let balloon_color = Array('red', 'green', 'blue');
+		let i = 0;
+
+		const balloon = document.querySelector('.balloon');
+
+		balloon.addEventListener('click', (e) => {
+			e.preventDefault();
+			if (balloon_size <= 410)
+			{
+				balloon_size += 10;
+			}
+			else
+				balloon_size = 200;
+			balloon.style.height = balloon_size + 'px';
+			balloon.style.width = balloon_size + 'px';
+			if (i < 2)
+				i++;
+			else
+				i = 0;
+			balloon.style.backgroundColor = balloon_color[i];
+		}
+		);
+
+		balloon.addEventListener('mouseout', (e) => {
+			e.preventDefault();
+			if (balloon_size >= 205)
+			{
+				balloon_size -= 5;
+			}
+			balloon.style.height = balloon_size + 'px';
+			balloon.style.width = balloon_size + 'px';
+			if (i > 0)
+				i--;
+			else
+				i = 2;
+			balloon.style.backgroundColor = balloon_color[i];
+		}
+		);
+	</script>
+</body>
+</html>
